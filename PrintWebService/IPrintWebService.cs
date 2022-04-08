@@ -13,16 +13,16 @@ namespace PrintWebService
     public interface IPrintWebService
     {
         [OperationContract]
-        bool IsRegisterd(string userName);
+        bool IsRegistered(string userName);
 
         [OperationContract]
         bool Print(int nbCopies, string productName, int cardId);
 
         [OperationContract]
-        void TransferMoney(int userId, float quota);
+        void TransferMoneyWithUserId(int userId, float quota);
 
         [OperationContract]
-        void TransferMoney(string userName, float quota);
+        void TransferMoneyWithUsername(string userName, float quota);
 
         [OperationContract]
         User GetUserByCardId(int cardId);
