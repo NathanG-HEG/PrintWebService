@@ -8,7 +8,6 @@ using DTO;
 
 namespace PrintWebService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IPrintWebService" in both code and config file together.
     [ServiceContract]
     public interface IPrintWebService
     {
@@ -19,7 +18,7 @@ namespace PrintWebService
         bool Print(int nbCopies, string productName, int cardId);
 
         [OperationContract]
-        void TransferMoneyWithUserId(int userId, float quota);
+        void TransferMoneyWithCardId(int cardId, float quota);
 
         [OperationContract]
         void TransferMoneyWithUsername(string userName, float quota);
@@ -28,7 +27,7 @@ namespace PrintWebService
         User GetUserByCardId(int cardId);
 
         [OperationContract]
-        void DebitAccount(int userId);
+        void DebitAccount(int userId, float amount);
         
         
 

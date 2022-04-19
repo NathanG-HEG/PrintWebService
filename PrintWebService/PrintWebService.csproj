@@ -84,6 +84,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{294b5aa7-22db-4b58-8ee1-51ae31ab0ca4}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8966b90a-e482-47d7-9c61-5da34884ac09}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{16af5368-b4c6-45af-a576-231407c8c46a}</Project>
       <Name>DTO</Name>

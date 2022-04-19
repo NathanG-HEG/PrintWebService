@@ -4,7 +4,7 @@ using DAL.dba;
 
 namespace BLL.managers
 {
-    public class UserManager:IUserManager
+    public class UserManager : IUserManager
     {
         private IUserDBA userDba;
 
@@ -32,6 +32,10 @@ namespace BLL.managers
         public bool Deposit(int userId, float amount)
         {
             float balance = GetBalanceByUserId(userId);
+            if (float.MaxValue - amount >= balance)
+            {
+                return false;
+            }
             return userDba.SetBalance(userId, balance + amount);
         }
     }

@@ -5,6 +5,11 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using DTO;
+using BLL;
+using BLL.interfaces;
+using BLL.managers;
+using DAL;
+using DAL.dba;
 
 namespace PrintWebService
 {
@@ -12,9 +17,11 @@ namespace PrintWebService
     // NOTE: In order to launch WCF Test Client for testing this service, please select PrintWebService.svc or PrintWebService.svc.cs at the Solution Explorer and start debugging.
     public class PrintWebService : IPrintWebService
     {
+
         public bool IsRegistered(string userName)
         {
-            throw new NotImplementedException();
+            IActiveDirectoryManager ad_mgr = new ActiveDirectoryManager(new ActiveDirectoryDBA());
+            return ad_mgr.GetUserByUsername(userName) != null;
         }
 
         public bool Print(int nbCopies, string productName, int cardId)
@@ -22,22 +29,49 @@ namespace PrintWebService
             throw new NotImplementedException();
         }
 
-        public void TransferMoneyWithUserId(int userId, float quota)
+        public void TransferMoneyWithCardId(int cardId, float quota)
         {
-            throw new NotImplementedException();
+            IPaymentSystemManager paymentSystemManager = new PaymentSystemManager(new PayementSystemDBA());
+            User user = paymentSystemManager.GetUserByCardId(cardId);
+            IUserManager userManager = new UserManager(new UserDBA());
+            userManager.Deposit(user.UserId, quota);
         }
 
         public void TransferMoneyWithUsername(string userName, float quota)
         {
-            throw new NotImplementedException();
+            //first look for a user in the online payment database
+            IOnlinePaymentSystemManager onlinePaymentMgr =
+                new OnlinePaymentSystemManager(new OnlinePayementSystemDBA());
+            User user = onlinePaymentMgr.GetUserByUsername(userName);
+            if (user != null)
+            {
+                //deposit money
+                IUserManager userManager = new UserManager(new UserDBA());
+                userManager.Deposit(user.UserId, quota);
+                return;
+            }
+
+            //if no user where found, look in the faculties database
+            IFacultyManager facultyManager =
+                new FacultyManager(new FacultyDBA());
+            user = facultyManager.GetUserByUsername(userName);
+            if (user != null)
+            {
+                //deposit money
+                IUserManager userManager = new UserManager(new UserDBA());
+                userManager.Deposit(user.UserId, quota);
+            }
+
         }
+
 
         public User GetUserByCardId(int cardId)
         {
-            throw new NotImplementedException();
+            ISapManager sapManager = new SapManager(new SAP_DBA());
+            return sapManager.GetUserByCardId(cardId);
         }
 
-        public void DebitAccount(int userId)
+        public void DebitAccount(int userId, float amount)
         {
             throw new NotImplementedException();
         }
