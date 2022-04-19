@@ -9,6 +9,6 @@ namespace DAL
     public interface IUserDBA
     {
         float GetBalanceByUserId(int userId);
-        bool SetBalance(int userId);
+        bool SetBalance(int userId, float balance);
     }
 }

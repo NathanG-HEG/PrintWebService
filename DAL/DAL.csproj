@@ -60,19 +60,22 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActiveDirectoryDBA.cs" />
-    <Compile Include="FacultyDBA.cs" />
-    <Compile Include="IActiveDirectoryDBA.cs" />
-    <Compile Include="IFacultyDBA.cs" />
-    <Compile Include="IOnlinePayementSystemDBA.cs" />
-    <Compile Include="IPayementSystemDBA.cs" />
-    <Compile Include="IPrintPriceDBA.cs" />
-    <Compile Include="IPrintSystemDBA.cs" />
-    <Compile Include="ISAP_DBA.cs" />
-    <Compile Include="IUserDBA.cs" />
-    <Compile Include="OnlinePayementSystemDBA.cs" />
-    <Compile Include="PayementSystemDBA.cs" />
-    <Compile Include="PrintPriceDBA.cs" />
+    <Compile Include="dba\ActiveDirectoryDBA.cs" />
+    <Compile Include="dba\FacultyDBA.cs" />
+    <Compile Include="dba\PrintSystemDBA.cs" />
+    <Compile Include="dba\SAP_DBA.cs" />
+    <Compile Include="dba\UserDBA.cs" />
+    <Compile Include="interfaces\IActiveDirectoryDBA.cs" />
+    <Compile Include="interfaces\IFacultyDBA.cs" />
+    <Compile Include="interfaces\IOnlinePayementSystemDBA.cs" />
+    <Compile Include="interfaces\IPayementSystemDBA.cs" />
+    <Compile Include="interfaces\IPrintPriceDBA.cs" />
+    <Compile Include="interfaces\IPrintSystemDBA.cs" />
+    <Compile Include="interfaces\ISAP_DBA.cs" />
+    <Compile Include="interfaces\IUserDBA.cs" />
+    <Compile Include="dba\OnlinePayementSystemDBA.cs" />
+    <Compile Include="dba\PayementSystemDBA.cs" />
+    <Compile Include="dba\PrintPriceDBA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,5 +87,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
