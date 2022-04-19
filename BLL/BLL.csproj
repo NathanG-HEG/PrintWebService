@@ -50,6 +50,9 @@
     <Compile Include="interfaces\IUserManager.cs" />
     <Compile Include="interfaces\ISapManager.cs" />
     <Compile Include="managers\PrintPriceManager.cs" />
+    <Compile Include="managers\PrintSystemManager.cs" />
+    <Compile Include="managers\SapManager.cs" />
+    <Compile Include="managers\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
