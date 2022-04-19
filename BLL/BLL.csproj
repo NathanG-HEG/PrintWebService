@@ -49,6 +49,10 @@
     <Compile Include="interfaces\IPrintSystemManager.cs" />
     <Compile Include="interfaces\IUserManager.cs" />
     <Compile Include="interfaces\ISapManager.cs" />
+    <Compile Include="managers\ActiveDirectoryManager.cs" />
+    <Compile Include="managers\FacultyManager.cs" />
+    <Compile Include="managers\OnlinePaymentSystemManager.cs" />
+    <Compile Include="managers\PaymentSystemManager.cs" />
     <Compile Include="managers\PrintPriceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

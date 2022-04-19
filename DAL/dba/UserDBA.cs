@@ -68,9 +68,8 @@ namespace DAL.dba
                 Console.WriteLine("Exception caught while setting order status: " + e.Message);
             }
 
-            if (result != 0)
-                return true;
-            return false;
+            //result is the number of line affected
+            return result != 0;
         }
     }
 }
