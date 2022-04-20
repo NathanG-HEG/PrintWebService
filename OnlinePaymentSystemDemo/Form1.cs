@@ -18,22 +18,20 @@ namespace OnlinePaymentSystemDemo
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             ServiceReference1.PrintWebServiceClient printWs = new ServiceReference1.PrintWebServiceClient();
-            var username = usernameField.Text;
-            float amount = (float) Convert.ToDouble(quotaField.Text);
-            printWs.TransferMoneyWithUsername(username, amount);
+            var username = idField.Text;
+            decimal amount = (decimal) Convert.ToDouble(quotaField.Text);
+            switch (combo_id.SelectedIndex)
+            {
+                case 0: printWs.TransferMoneyWithUsername(idField.Text, 0);
+                    break;
+                case 1: printWs.TransferMoneyWithUserId(Convert.ToInt32(idField.Text), 0);
+                    break;
+            }
         }
 
-        private void quotaField_TextChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }
