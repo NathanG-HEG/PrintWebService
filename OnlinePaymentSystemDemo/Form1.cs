@@ -30,5 +30,10 @@ namespace OnlinePaymentSystemDemo
             float amount = (float) Convert.ToDouble(quotaField.Text);
             printWs.TransferMoneyWithUsername(username, amount);
         }
+
+        private void quotaField_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -40,49 +40,53 @@ namespace OnlinePaymentSystemDemo
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(196, 95);
+            this.label1.Location = new System.Drawing.Point(172, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 20);
+            this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username: ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // usernameField
             // 
-            this.usernameField.Location = new System.Drawing.Point(277, 95);
+            this.usernameField.Location = new System.Drawing.Point(242, 71);
+            this.usernameField.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.usernameField.Name = "usernameField";
-            this.usernameField.Size = new System.Drawing.Size(207, 27);
+            this.usernameField.Size = new System.Drawing.Size(182, 23);
             this.usernameField.TabIndex = 1;
             // 
             // quotaField
             // 
-            this.quotaField.Location = new System.Drawing.Point(319, 162);
+            this.quotaField.Location = new System.Drawing.Point(279, 122);
+            this.quotaField.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.quotaField.Name = "quotaField";
-            this.quotaField.Size = new System.Drawing.Size(165, 27);
+            this.quotaField.Size = new System.Drawing.Size(145, 23);
             this.quotaField.TabIndex = 3;
+            this.quotaField.TextChanged += new System.EventHandler(this.quotaField_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(196, 162);
+            this.label2.Location = new System.Drawing.Point(172, 122);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(94, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Amount to load:";
             // 
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(301, 45);
+            this.errorLabel.Location = new System.Drawing.Point(263, 34);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(0, 20);
+            this.errorLabel.Size = new System.Drawing.Size(0, 15);
             this.errorLabel.TabIndex = 4;
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(277, 239);
+            this.loadButton.Location = new System.Drawing.Point(242, 179);
+            this.loadButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(94, 29);
+            this.loadButton.Size = new System.Drawing.Size(82, 22);
             this.loadButton.TabIndex = 5;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = true;
@@ -90,15 +94,16 @@ namespace OnlinePaymentSystemDemo
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 339);
+            this.ClientSize = new System.Drawing.Size(583, 254);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.quotaField);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.usernameField);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
