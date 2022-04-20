@@ -17,14 +17,14 @@ namespace DAL.dba
             connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
         }
 
-        public float GetBalanceByUserId(int userId)
+        public decimal GetBalanceByUserId(int userId)
         {
-            float balance = 0f;
+            decimal balance = 0;
             try
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM Users WHERE user_id = @userId;";
+                    string query = "SELECT * FROM Users WHERE User_Id = @userId;";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@userId", userId);
                     cn.Open();
@@ -32,7 +32,7 @@ namespace DAL.dba
                     {
                         if (dr.Read())
                         {
-                            balance = (float)dr["balance"];
+                            balance = (decimal)dr["Balance"];
                         }
                     }
                 }
@@ -44,7 +44,7 @@ namespace DAL.dba
             return balance;
         }
 
-        public bool SetBalance(int userId, float balance)
+        public bool SetBalance(int userId, decimal balance)
         {
             int result = 0;
             try

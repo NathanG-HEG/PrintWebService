@@ -24,7 +24,7 @@ namespace DAL
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM OnlinePayementSystemTable WHERE username = @username;";
+                    string query = "SELECT * FROM OnlinePaymentSystemTable WHERE username = @username;";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@username", username);
                     cn.Open();

@@ -17,9 +17,9 @@ namespace DAL
             connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
         }
 
-        public float GetPriceByProductName(string productName)
+        public decimal GetPriceByProductName(string productName)
         {
-            float price = 0.0F;
+            decimal price = 0;
             try
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
@@ -32,7 +32,7 @@ namespace DAL
                     {
                         if (dr.Read())
                         {
-                            price = (float) ((int)dr["priceInCents"] / 100);
+                            price = (decimal) ((int)dr["priceInCents"] / 100);
                         }
                     }
                 }

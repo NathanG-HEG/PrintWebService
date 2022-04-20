@@ -15,10 +15,10 @@ namespace PrintWebService
         bool Print(int nbCopies, string productName, int cardId);
 
         [OperationContract]
-        void TransferMoneyWithCardId(int cardId, float quota);
+        void TransferMoneyWithCardId(int cardId, decimal quota);
 
         [OperationContract]
-        void TransferMoneyWithUsername(string userName, float quota);
+        void TransferMoneyWithUsername(string userName, decimal quota);
 
         [OperationContract]
         User GetUserByCardId(int cardId);

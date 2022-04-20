@@ -14,14 +14,14 @@ namespace BLL.managers
         }
 
 
-        public float GetBalanceByUserId(int userId)
+        public decimal GetBalanceByUserId(int userId)
         {
             return userDba.GetBalanceByUserId(userId);
         }
 
-        public bool Charge(int userId, float amount)
+        public bool Charge(int userId, decimal amount)
         {
-            float balance = GetBalanceByUserId(userId);
+            decimal balance = GetBalanceByUserId(userId);
             if (amount <= balance)
             {
                 return userDba.SetBalance(userId, balance - amount);
@@ -29,10 +29,10 @@ namespace BLL.managers
             return false;
         }
 
-        public bool Deposit(int userId, float amount)
+        public bool Deposit(int userId, decimal amount)
         {
-            float balance = GetBalanceByUserId(userId);
-            if (float.MaxValue - amount >= balance)
+            decimal balance = GetBalanceByUserId(userId);
+            if (decimal.MaxValue - amount <= balance)
             {
                 return false;
             }

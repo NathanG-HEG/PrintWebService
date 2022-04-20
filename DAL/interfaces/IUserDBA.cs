@@ -8,7 +8,7 @@ namespace DAL
 {
     public interface IUserDBA
     {
-        float GetBalanceByUserId(int userId);
-        bool SetBalance(int userId, float balance);
+        decimal GetBalanceByUserId(int userId);
+        bool SetBalance(int userId, decimal balance);
     }
 }

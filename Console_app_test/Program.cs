@@ -7,6 +7,7 @@ namespace Console_app_test
     {
         static void Main(string[] args)
         {
+            throw new Exception("hello");
             PrintWebService.PrintWebServiceClient printWs = new PrintWebService.PrintWebServiceClient();
             User user =  printWs.GetUserByCardId(123456789);
             Console.WriteLine(user.Balance);

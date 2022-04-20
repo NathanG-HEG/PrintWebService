@@ -2,7 +2,7 @@
 {
     public interface IPrintPriceManager
     {
-        float GetPriceByProductName(string productName);
+        decimal GetPriceByProductName(string productName);
 
     }
 }

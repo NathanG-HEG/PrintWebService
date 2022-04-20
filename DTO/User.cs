@@ -9,6 +9,6 @@ namespace DTO
     public class User
     {
         public int UserId { get; set; }
-        public float Balance { get; set; }
+        public decimal Balance { get; set; }
     }
 }

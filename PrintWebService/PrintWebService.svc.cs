@@ -24,12 +24,12 @@ namespace PrintWebService
             ISapManager sapManager = new SapManager(new SAP_DBA());
             User user = sapManager.GetUserByCardId(cardId);
             PrintPriceManager printPriceManager = new PrintPriceManager(new PrintPriceDBA());
-            float price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
+            decimal price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
             return price <= user.Balance;
 
         }
 
-        public void TransferMoneyWithCardId(int cardId, float quota)
+        public void TransferMoneyWithCardId(int cardId, decimal quota)
         {
             IPaymentSystemManager paymentSystemManager = new PaymentSystemManager(new PayementSystemDBA());
             User user = paymentSystemManager.GetUserByCardId(cardId);
@@ -37,7 +37,7 @@ namespace PrintWebService
             userManager.Deposit(user.UserId, quota);
         }
 
-        public void TransferMoneyWithUsername(string userName, float quota)
+        public void TransferMoneyWithUsername(string userName, decimal quota)
         {
             //first look for a user in the online payment database
             IOnlinePaymentSystemManager onlinePaymentMgr =
@@ -76,7 +76,7 @@ namespace PrintWebService
             ISapManager sapManager = new SapManager(new SAP_DBA());
             User user = sapManager.GetUserByCardId(cardId);
             PrintPriceManager printPriceManager = new PrintPriceManager(new PrintPriceDBA());
-            float price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
+            decimal price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
             IUserManager userManager = new UserManager(new UserDBA());
             userManager.Charge(user.UserId, price);
         }

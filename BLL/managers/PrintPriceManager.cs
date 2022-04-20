@@ -12,7 +12,7 @@ namespace BLL.managers
             this.printPriceDba = printPriceDba;
         }
 
-        public float GetPriceByProductName(string productName)
+        public decimal GetPriceByProductName(string productName)
         {
             return printPriceDba.GetPriceByProductName(productName);
         }

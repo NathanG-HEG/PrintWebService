@@ -16,6 +16,7 @@ namespace DAL.dba
         public SAP_DBA()
         {
             connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
+            Console.WriteLine(connectionString);
         }
 
         public User GetUserByCardId(int cardId)
@@ -25,7 +26,7 @@ namespace DAL.dba
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT * FROM SapTable WHERE  card_id = @cardId;";
+                    string query = "SELECT * FROM SapTable WHERE Card_id = @cardId;";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@cardId", cardId);
                     cn.Open();
@@ -34,7 +35,7 @@ namespace DAL.dba
                         if (dr.Read())
                         {
                             user = new User();
-                            user.UserId = (int)dr["User_id"];
+                            user.UserId = (int)dr["User_Id"];
                         }
                     }
                 }

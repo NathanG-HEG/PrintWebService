@@ -2,8 +2,8 @@
 {
     public interface IUserManager
     {
-        float GetBalanceByUserId(int userId);
-        bool Charge(int userId, float amount);
-        bool Deposit(int userId, float amount);
+        decimal GetBalanceByUserId(int userId);
+        bool Charge(int userId, decimal amount);
+        bool Deposit(int userId, decimal amount);
     }
 }

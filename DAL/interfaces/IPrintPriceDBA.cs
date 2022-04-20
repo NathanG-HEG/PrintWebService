@@ -8,6 +8,6 @@ namespace DAL
 {
     public interface IPrintPriceDBA
     {
-        float GetPriceByProductName(string productName);
+        decimal GetPriceByProductName(string productName);
     }
 }

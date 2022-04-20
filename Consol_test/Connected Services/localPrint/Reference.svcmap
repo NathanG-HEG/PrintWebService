@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c324860a-933a-4996-bc58-969efa7a60c3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:13852/PrintWebService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PrintWebService.xsd" MetadataType="Schema" ID="7dfa5bb2-a70e-4691-b600-8f31861adbf1" SourceId="1" SourceUrl="http://localhost:13852/PrintWebService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PrintWebService.disco" MetadataType="Disco" ID="a8a37ba0-63af-40a9-9fc4-0cc4b8bfa9bf" SourceId="1" SourceUrl="http://localhost:13852/PrintWebService.svc?disco" />
+    <MetadataFile FileName="PrintWebService1.xsd" MetadataType="Schema" ID="75791d99-6bf1-41d3-a93d-89a1a6b87c0a" SourceId="1" SourceUrl="http://localhost:13852/PrintWebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PrintWebService.wsdl" MetadataType="Wsdl" ID="14d9bd1b-a6e1-46ef-afba-6b2342244c9b" SourceId="1" SourceUrl="http://localhost:13852/PrintWebService.svc?wsdl" />
+    <MetadataFile FileName="PrintWebService2.xsd" MetadataType="Schema" ID="94b61b61-5447-45be-be62-747fed7278b3" SourceId="1" SourceUrl="http://localhost:13852/PrintWebService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
