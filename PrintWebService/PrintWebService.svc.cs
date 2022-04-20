@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -18,15 +19,14 @@ namespace PrintWebService
     public class PrintWebService : IPrintWebService
     {
 
-        public bool IsRegistered(string userName)
-        {
-            IActiveDirectoryManager ad_mgr = new ActiveDirectoryManager(new ActiveDirectoryDBA());
-            return ad_mgr.GetUserByUsername(userName) != null;
-        }
-
         public bool Print(int nbCopies, string productName, int cardId)
         {
-            throw new NotImplementedException();
+            ISapManager sapManager = new SapManager(new SAP_DBA());
+            User user = sapManager.GetUserByCardId(cardId);
+            PrintPriceManager printPriceManager = new PrintPriceManager(new PrintPriceDBA());
+            float price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
+            return price <= user.Balance;
+
         }
 
         public void TransferMoneyWithCardId(int cardId, float quota)
@@ -64,16 +64,21 @@ namespace PrintWebService
 
         }
 
-
         public User GetUserByCardId(int cardId)
         {
             ISapManager sapManager = new SapManager(new SAP_DBA());
             return sapManager.GetUserByCardId(cardId);
         }
 
-        public void DebitAccount(int userId, float amount)
+        //pass the actual number of printed copies (in case not all copies were printed)
+        public void DebitAccount(int nbCopies, string productName, int cardId)
         {
-            throw new NotImplementedException();
+            ISapManager sapManager = new SapManager(new SAP_DBA());
+            User user = sapManager.GetUserByCardId(cardId);
+            PrintPriceManager printPriceManager = new PrintPriceManager(new PrintPriceDBA());
+            float price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
+            IUserManager userManager = new UserManager(new UserDBA());
+            userManager.Charge(user.UserId, price);
         }
     }
 }

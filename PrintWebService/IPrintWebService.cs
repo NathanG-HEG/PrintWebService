@@ -12,9 +12,6 @@ namespace PrintWebService
     public interface IPrintWebService
     {
         [OperationContract]
-        bool IsRegistered(string userName);
-
-        [OperationContract]
         bool Print(int nbCopies, string productName, int cardId);
 
         [OperationContract]
@@ -27,7 +24,7 @@ namespace PrintWebService
         User GetUserByCardId(int cardId);
 
         [OperationContract]
-        void DebitAccount(int userId, float amount);
+        void DebitAccount(int nbCopies, string productName, int cardId);
         
         
 
