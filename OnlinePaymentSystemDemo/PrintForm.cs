@@ -22,7 +22,10 @@ namespace OnlinePaymentSystemDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var username = idField.Text;
+            //do not process if some required fields are not filled
+            if (idField.Text.Equals("") || combo_id.Text.Equals("") || quotaField.Text.Equals(""))
+                return;
+
             decimal amount = (decimal) Convert.ToDouble(quotaField.Text);
             switch (combo_id.SelectedIndex)
             {
@@ -35,11 +38,15 @@ namespace OnlinePaymentSystemDemo
 
         private void button_print_Click(object sender, EventArgs e)
         {
+            //do not process if some required fields are not filled
+            if (photocopies_in.Text.Equals("") || combo_product.Text.Equals("") || card_id_in.Text.Equals(""))
+                return;
+
             int nbCopies = Convert.ToInt32(photocopies_in.Text);
             string product = combo_product.Text;
             int cardId = Convert.ToInt32(card_id_in.Text);
 
-            bool canPrint = printWs.Print(nbCopies, product, Convert.ToInt32(card_id_in.Text));
+            bool canPrint = printWs.Print(nbCopies, product, cardId);
             if (!canPrint)
             {
                 //error dialog
