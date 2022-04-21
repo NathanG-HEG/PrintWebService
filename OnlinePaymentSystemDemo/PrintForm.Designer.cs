@@ -99,6 +99,7 @@ namespace OnlinePaymentSystemDemo
             this.combo_id.Name = "combo_id";
             this.combo_id.Size = new System.Drawing.Size(133, 23);
             this.combo_id.TabIndex = 7;
+            this.combo_id.Text = "Username";
             // 
             // combo_product
             // 
@@ -111,6 +112,7 @@ namespace OnlinePaymentSystemDemo
             this.combo_product.Name = "combo_product";
             this.combo_product.Size = new System.Drawing.Size(133, 23);
             this.combo_product.TabIndex = 8;
+            this.combo_product.Text = "A4BW";
             // 
             // button_print
             // 
@@ -166,7 +168,7 @@ namespace OnlinePaymentSystemDemo
             this.card_id_in.Size = new System.Drawing.Size(110, 23);
             this.card_id_in.TabIndex = 14;
             // 
-            // Form1
+            // PrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,7 +187,7 @@ namespace OnlinePaymentSystemDemo
             this.Controls.Add(this.amount_name);
             this.Controls.Add(this.idField);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
+            this.Name = "PrintForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
