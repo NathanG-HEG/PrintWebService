@@ -22,7 +22,7 @@ namespace BLL.managers
         public bool Charge(int userId, decimal amount)
         {
             decimal balance = GetBalanceByUserId(userId);
-            if (amount <= balance)
+            if (amount <= balance && amount > 0)
             {
                 return userDba.SetBalance(userId, balance - amount);
             }
@@ -32,6 +32,7 @@ namespace BLL.managers
         public bool Deposit(int userId, decimal amount)
         {
             decimal balance = GetBalanceByUserId(userId);
+            if (amount < 0) return false;
             if (decimal.MaxValue - amount <= balance)
             {
                 return false;
