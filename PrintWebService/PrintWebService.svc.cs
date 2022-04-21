@@ -14,11 +14,8 @@ using DAL.dba;
 
 namespace PrintWebService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "PrintWebService" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select PrintWebService.svc or PrintWebService.svc.cs at the Solution Explorer and start debugging.
     public class PrintWebService : IPrintWebService
     {
-
         public bool Print(int nbCopies, string productName, int cardId)
         {
             ISapManager sapManager = new SapManager(new SAP_DBA());
@@ -27,8 +24,7 @@ namespace PrintWebService
             user.Balance = userManager.GetBalanceByUserId(user.UserId);
             PrintPriceManager printPriceManager = new PrintPriceManager(new PrintPriceDBA());
             decimal price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
-            return price <= user.Balance;
-
+            return price <= user.Balance && price > 0;
         }
 
         public void TransferMoneyWithCardId(int cardId, decimal quota)
@@ -36,7 +32,10 @@ namespace PrintWebService
             IPaymentSystemManager paymentSystemManager = new PaymentSystemManager(new PayementSystemDBA());
             User user = paymentSystemManager.GetUserByCardId(cardId);
             IUserManager userManager = new UserManager(new UserDBA());
-            userManager.Deposit(user.UserId, quota);
+            if (user != null)
+            {
+                userManager.Deposit(user.UserId, quota);
+            }
         }
 
         public void TransferMoneyWithUsername(string userName, decimal quota)
@@ -63,7 +62,6 @@ namespace PrintWebService
                 IUserManager userManager = new UserManager(new UserDBA());
                 userManager.Deposit(user.UserId, quota);
             }
-
         }
 
         public User GetUserByCardId(int cardId)
@@ -80,7 +78,10 @@ namespace PrintWebService
             PrintPriceManager printPriceManager = new PrintPriceManager(new PrintPriceDBA());
             decimal price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
             IUserManager userManager = new UserManager(new UserDBA());
-            userManager.Charge(user.UserId, price);
+            if (user != null && price > 0)
+            {
+                userManager.Charge(user.UserId, price);
+            }
         }
     }
 }
