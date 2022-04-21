@@ -23,6 +23,8 @@ namespace PrintWebService
         {
             ISapManager sapManager = new SapManager(new SAP_DBA());
             User user = sapManager.GetUserByCardId(cardId);
+            IUserManager userManager = new UserManager(new UserDBA());
+            user.Balance = userManager.GetBalanceByUserId(user.UserId);
             PrintPriceManager printPriceManager = new PrintPriceManager(new PrintPriceDBA());
             decimal price = printPriceManager.GetPriceByProductName(productName) * nbCopies;
             return price <= user.Balance;

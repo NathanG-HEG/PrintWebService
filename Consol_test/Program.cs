@@ -13,10 +13,11 @@ namespace Consol_test
     {
         static void Main(string[] args)
         {
+            
             localPrint.PrintWebServiceClient printWb = new localPrint.PrintWebServiceClient();
-            printWb.TransferMoneyWithUsername("Benjamin", 10);
-            DTO.User user = printWb.GetUserByCardId(123456789);
-            Console.WriteLine();
+            printWb.DebitAccount(1, "A4BW", 123456789);
+            
+
 
 
         }

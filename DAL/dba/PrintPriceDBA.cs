@@ -19,7 +19,7 @@ namespace DAL
 
         public decimal GetPriceByProductName(string productName)
         {
-            decimal price = 0;
+            int price = 0;
             try
             {
                 using (SqlConnection cn = new SqlConnection(connectionString))
@@ -32,16 +32,16 @@ namespace DAL
                     {
                         if (dr.Read())
                         {
-                            price = (decimal) ((int)dr["priceInCents"] / 100);
+                            price = (int)dr["priceInCents"];
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception caught while accessing print system user " + e.Message);
+                Console.WriteLine("Exception caught while accessing print prices " + e.Message);
             }
-            return price;
+            return ((decimal)price) / 100;
         }
     }
 }

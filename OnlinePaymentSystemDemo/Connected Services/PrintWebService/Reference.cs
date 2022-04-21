@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceReference1
+namespace PrintWebService
 {
     using System.Runtime.Serialization;
     
@@ -18,12 +18,12 @@ namespace ServiceReference1
     public partial class User : object
     {
         
-        private float BalanceField;
+        private decimal BalanceField;
         
         private int UserIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public float Balance
+        public decimal Balance
         {
             get
             {
@@ -50,15 +50,9 @@ namespace ServiceReference1
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3-preview3.21351.2")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IPrintWebService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PrintWebService.IPrintWebService")]
     public interface IPrintWebService
     {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/IsRegistered", ReplyAction="http://tempuri.org/IPrintWebService/IsRegisteredResponse")]
-        bool IsRegistered(string userName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/IsRegistered", ReplyAction="http://tempuri.org/IPrintWebService/IsRegisteredResponse")]
-        System.Threading.Tasks.Task<bool> IsRegisteredAsync(string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/Print", ReplyAction="http://tempuri.org/IPrintWebService/PrintResponse")]
         bool Print(int nbCopies, string productName, int cardId);
@@ -66,39 +60,39 @@ namespace ServiceReference1
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/Print", ReplyAction="http://tempuri.org/IPrintWebService/PrintResponse")]
         System.Threading.Tasks.Task<bool> PrintAsync(int nbCopies, string productName, int cardId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/TransferMoneyWithUserId", ReplyAction="http://tempuri.org/IPrintWebService/TransferMoneyWithUserIdResponse")]
-        void TransferMoneyWithUserId(int userId, float quota);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/TransferMoneyWithCardId", ReplyAction="http://tempuri.org/IPrintWebService/TransferMoneyWithCardIdResponse")]
+        void TransferMoneyWithCardId(int cardId, decimal quota);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/TransferMoneyWithUserId", ReplyAction="http://tempuri.org/IPrintWebService/TransferMoneyWithUserIdResponse")]
-        System.Threading.Tasks.Task TransferMoneyWithUserIdAsync(int userId, float quota);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/TransferMoneyWithUsername", ReplyAction="http://tempuri.org/IPrintWebService/TransferMoneyWithUsernameResponse")]
-        void TransferMoneyWithUsername(string userName, float quota);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/TransferMoneyWithCardId", ReplyAction="http://tempuri.org/IPrintWebService/TransferMoneyWithCardIdResponse")]
+        System.Threading.Tasks.Task TransferMoneyWithCardIdAsync(int cardId, decimal quota);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/TransferMoneyWithUsername", ReplyAction="http://tempuri.org/IPrintWebService/TransferMoneyWithUsernameResponse")]
-        System.Threading.Tasks.Task TransferMoneyWithUsernameAsync(string userName, float quota);
+        void TransferMoneyWithUsername(string userName, decimal quota);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/TransferMoneyWithUsername", ReplyAction="http://tempuri.org/IPrintWebService/TransferMoneyWithUsernameResponse")]
+        System.Threading.Tasks.Task TransferMoneyWithUsernameAsync(string userName, decimal quota);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/GetUserByCardId", ReplyAction="http://tempuri.org/IPrintWebService/GetUserByCardIdResponse")]
-        ServiceReference1.User GetUserByCardId(int cardId);
+        PrintWebService.User GetUserByCardId(int cardId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/GetUserByCardId", ReplyAction="http://tempuri.org/IPrintWebService/GetUserByCardIdResponse")]
-        System.Threading.Tasks.Task<ServiceReference1.User> GetUserByCardIdAsync(int cardId);
+        System.Threading.Tasks.Task<PrintWebService.User> GetUserByCardIdAsync(int cardId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/DebitAccount", ReplyAction="http://tempuri.org/IPrintWebService/DebitAccountResponse")]
-        void DebitAccount(int userId);
+        void DebitAccount(int nbCopies, string productName, int cardId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrintWebService/DebitAccount", ReplyAction="http://tempuri.org/IPrintWebService/DebitAccountResponse")]
-        System.Threading.Tasks.Task DebitAccountAsync(int userId);
+        System.Threading.Tasks.Task DebitAccountAsync(int nbCopies, string productName, int cardId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3-preview3.21351.2")]
-    public interface IPrintWebServiceChannel : ServiceReference1.IPrintWebService, System.ServiceModel.IClientChannel
+    public interface IPrintWebServiceChannel : PrintWebService.IPrintWebService, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3-preview3.21351.2")]
-    public partial class PrintWebServiceClient : System.ServiceModel.ClientBase<ServiceReference1.IPrintWebService>, ServiceReference1.IPrintWebService
+    public partial class PrintWebServiceClient : System.ServiceModel.ClientBase<PrintWebService.IPrintWebService>, PrintWebService.IPrintWebService
     {
         
         /// <summary>
@@ -141,16 +135,6 @@ namespace ServiceReference1
         {
         }
         
-        public bool IsRegistered(string userName)
-        {
-            return base.Channel.IsRegistered(userName);
-        }
-        
-        public System.Threading.Tasks.Task<bool> IsRegisteredAsync(string userName)
-        {
-            return base.Channel.IsRegisteredAsync(userName);
-        }
-        
         public bool Print(int nbCopies, string productName, int cardId)
         {
             return base.Channel.Print(nbCopies, productName, cardId);
@@ -161,44 +145,44 @@ namespace ServiceReference1
             return base.Channel.PrintAsync(nbCopies, productName, cardId);
         }
         
-        public void TransferMoneyWithUserId(int userId, float quota)
+        public void TransferMoneyWithCardId(int cardId, decimal quota)
         {
-            base.Channel.TransferMoneyWithUserId(userId, quota);
+            base.Channel.TransferMoneyWithCardId(cardId, quota);
         }
         
-        public System.Threading.Tasks.Task TransferMoneyWithUserIdAsync(int userId, float quota)
+        public System.Threading.Tasks.Task TransferMoneyWithCardIdAsync(int cardId, decimal quota)
         {
-            return base.Channel.TransferMoneyWithUserIdAsync(userId, quota);
+            return base.Channel.TransferMoneyWithCardIdAsync(cardId, quota);
         }
         
-        public void TransferMoneyWithUsername(string userName, float quota)
+        public void TransferMoneyWithUsername(string userName, decimal quota)
         {
             base.Channel.TransferMoneyWithUsername(userName, quota);
         }
         
-        public System.Threading.Tasks.Task TransferMoneyWithUsernameAsync(string userName, float quota)
+        public System.Threading.Tasks.Task TransferMoneyWithUsernameAsync(string userName, decimal quota)
         {
             return base.Channel.TransferMoneyWithUsernameAsync(userName, quota);
         }
         
-        public ServiceReference1.User GetUserByCardId(int cardId)
+        public PrintWebService.User GetUserByCardId(int cardId)
         {
             return base.Channel.GetUserByCardId(cardId);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference1.User> GetUserByCardIdAsync(int cardId)
+        public System.Threading.Tasks.Task<PrintWebService.User> GetUserByCardIdAsync(int cardId)
         {
             return base.Channel.GetUserByCardIdAsync(cardId);
         }
         
-        public void DebitAccount(int userId)
+        public void DebitAccount(int nbCopies, string productName, int cardId)
         {
-            base.Channel.DebitAccount(userId);
+            base.Channel.DebitAccount(nbCopies, productName, cardId);
         }
         
-        public System.Threading.Tasks.Task DebitAccountAsync(int userId)
+        public System.Threading.Tasks.Task DebitAccountAsync(int nbCopies, string productName, int cardId)
         {
-            return base.Channel.DebitAccountAsync(userId);
+            return base.Channel.DebitAccountAsync(nbCopies, productName, cardId);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
