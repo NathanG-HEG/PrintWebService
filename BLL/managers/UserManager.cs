@@ -32,7 +32,8 @@ namespace BLL.managers
         public bool Deposit(int userId, decimal amount)
         {
             decimal balance = GetBalanceByUserId(userId);
-            if (decimal.MaxValue - amount <= balance || amount < 0)
+            if (amount < 0) return false;
+            if (decimal.MaxValue - amount <= balance)
             {
                 return false;
             }
